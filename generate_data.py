@@ -23,13 +23,22 @@ def generate_mock_data():
     categories = ['Electronics', 'Clothing', 'Home & Garden', 'Sports', 'Books']
     for i in range(1, 101):
         category = random.choice(categories)
+        # Map categories to local images for relevance
+        category_images = {
+            'Electronics': '/static/images/electronics.png',
+            'Clothing': '/static/images/clothing.png',
+            'Home & Garden': '/static/images/home.png',
+            'Sports': '/static/images/sports.png',
+            'Books': '/static/images/books.png'
+        }
+        
         products_data.append({
             'product_id': i,
             'name': f'{category} Product {i}',
             'category': category,
             'price': round(random.uniform(10.0, 500.0), 2),
             'rating': round(random.uniform(3.0, 5.0), 1),
-            'image_url': f'https://picsum.photos/seed/product_{i}/400/300'
+            'image_url': category_images.get(category, '/static/images/electronics.png')
         })
     products_df = pd.DataFrame(products_data)
     products_df.to_csv('data/products.csv', index=False)
