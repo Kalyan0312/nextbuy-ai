@@ -1,0 +1,101 @@
+product_id,name,category,price,rating,image_url
+1,Clothing Product 1,Clothing,226.07,4.5,https://picsum.photos/seed/product_1/400/300
+2,Sports Product 2,Sports,182.1,4.6,https://picsum.photos/seed/product_2/400/300
+3,Home & Garden Product 3,Home & Garden,281.26,3.0,https://picsum.photos/seed/product_3/400/300
+4,Clothing Product 4,Clothing,249.31,4.3,https://picsum.photos/seed/product_4/400/300
+5,Electronics Product 5,Electronics,388.96,3.2,https://picsum.photos/seed/product_5/400/300
+6,Sports Product 6,Sports,55.85,4.2,https://picsum.photos/seed/product_6/400/300
+7,Home & Garden Product 7,Home & Garden,188.34,4.9,https://picsum.photos/seed/product_7/400/300
+8,Clothing Product 8,Clothing,255.26,3.6,https://picsum.photos/seed/product_8/400/300
+9,Sports Product 9,Sports,408.16,3.1,https://picsum.photos/seed/product_9/400/300
+10,Sports Product 10,Sports,293.87,4.1,https://picsum.photos/seed/product_10/400/300
+11,Clothing Product 11,Clothing,315.65,4.4,https://picsum.photos/seed/product_11/400/300
+12,Clothing Product 12,Clothing,485.97,4.1,https://picsum.photos/seed/product_12/400/300
+13,Clothing Product 13,Clothing,84.15,4.6,https://picsum.photos/seed/product_13/400/300
+14,Home & Garden Product 14,Home & Garden,46.81,4.4,https://picsum.photos/seed/product_14/400/300
+15,Home & Garden Product 15,Home & Garden,168.04,3.2,https://picsum.photos/seed/product_15/400/300
+16,Books Product 16,Books,78.76,3.4,https://picsum.photos/seed/product_16/400/300
+17,Books Product 17,Books,289.03,4.2,https://picsum.photos/seed/product_17/400/300
+18,Home & Garden Product 18,Home & Garden,30.23,4.1,https://picsum.photos/seed/product_18/400/300
+19,Clothing Product 19,Clothing,267.12,4.7,https://picsum.photos/seed/product_19/400/300
+20,Electronics Product 20,Electronics,63.84,3.0,https://picsum.photos/seed/product_20/400/300
+21,Electronics Product 21,Electronics,93.77,4.8,https://picsum.photos/seed/product_21/400/300
+22,Home & Garden Product 22,Home & Garden,376.66,4.7,https://picsum.photos/seed/product_22/400/300
+23,Sports Product 23,Sports,143.33,3.3,https://picsum.photos/seed/product_23/400/300
+24,Electronics Product 24,Electronics,483.6,3.2,https://picsum.photos/seed/product_24/400/300
+25,Sports Product 25,Sports,349.94,4.2,https://picsum.photos/seed/product_25/400/300
+26,Home & Garden Product 26,Home & Garden,385.33,3.3,https://picsum.photos/seed/product_26/400/300
+27,Home & Garden Product 27,Home & Garden,473.85,3.7,https://picsum.photos/seed/product_27/400/300
+28,Electronics Product 28,Electronics,110.21,4.2,https://picsum.photos/seed/product_28/400/300
+29,Sports Product 29,Sports,170.49,4.8,https://picsum.photos/seed/product_29/400/300
+30,Clothing Product 30,Clothing,434.35,3.5,https://picsum.photos/seed/product_30/400/300
+31,Home & Garden Product 31,Home & Garden,298.01,3.2,https://picsum.photos/seed/product_31/400/300
+32,Clothing Product 32,Clothing,16.2,3.1,https://picsum.photos/seed/product_32/400/300
+33,Books Product 33,Books,138.04,3.1,https://picsum.photos/seed/product_33/400/300
+34,Sports Product 34,Sports,311.5,4.8,https://picsum.photos/seed/product_34/400/300
+35,Books Product 35,Books,72.28,4.8,https://picsum.photos/seed/product_35/400/300
+36,Home & Garden Product 36,Home & Garden,330.99,4.3,https://picsum.photos/seed/product_36/400/300
+37,Clothing Product 37,Clothing,331.09,5.0,https://picsum.photos/seed/product_37/400/300
+38,Clothing Product 38,Clothing,332.47,4.7,https://picsum.photos/seed/product_38/400/300
+39,Home & Garden Product 39,Home & Garden,409.35,3.4,https://picsum.photos/seed/product_39/400/300
+40,Home & Garden Product 40,Home & Garden,206.24,4.2,https://picsum.photos/seed/product_40/400/300
+41,Clothing Product 41,Clothing,414.48,3.3,https://picsum.photos/seed/product_41/400/300
+42,Clothing Product 42,Clothing,471.96,4.5,https://picsum.photos/seed/product_42/400/300
+43,Clothing Product 43,Clothing,236.71,4.8,https://picsum.photos/seed/product_43/400/300
+44,Books Product 44,Books,127.05,4.0,https://picsum.photos/seed/product_44/400/300
+45,Electronics Product 45,Electronics,374.96,4.7,https://picsum.photos/seed/product_45/400/300
+46,Home & Garden Product 46,Home & Garden,134.55,3.7,https://picsum.photos/seed/product_46/400/300
+47,Books Product 47,Books,188.5,4.7,https://picsum.photos/seed/product_47/400/300
+48,Books Product 48,Books,300.72,4.5,https://picsum.photos/seed/product_48/400/300
+49,Clothing Product 49,Clothing,358.4,3.2,https://picsum.photos/seed/product_49/400/300
+50,Electronics Product 50,Electronics,461.72,3.5,https://picsum.photos/seed/product_50/400/300
+51,Sports Product 51,Sports,351.33,4.7,https://picsum.photos/seed/product_51/400/300
+52,Books Product 52,Books,42.19,5.0,https://picsum.photos/seed/product_52/400/300
+53,Sports Product 53,Sports,425.82,3.3,https://picsum.photos/seed/product_53/400/300
+54,Sports Product 54,Sports,24.31,4.4,https://picsum.photos/seed/product_54/400/300
+55,Electronics Product 55,Electronics,342.63,4.4,https://picsum.photos/seed/product_55/400/300
+56,Clothing Product 56,Clothing,407.57,3.3,https://picsum.photos/seed/product_56/400/300
+57,Clothing Product 57,Clothing,238.62,4.5,https://picsum.photos/seed/product_57/400/300
+58,Sports Product 58,Sports,376.16,4.0,https://picsum.photos/seed/product_58/400/300
+59,Home & Garden Product 59,Home & Garden,137.88,3.9,https://picsum.photos/seed/product_59/400/300
+60,Sports Product 60,Sports,367.66,3.9,https://picsum.photos/seed/product_60/400/300
+61,Electronics Product 61,Electronics,484.94,3.7,https://picsum.photos/seed/product_61/400/300
+62,Books Product 62,Books,206.14,3.0,https://picsum.photos/seed/product_62/400/300
+63,Sports Product 63,Sports,35.62,4.0,https://picsum.photos/seed/product_63/400/300
+64,Clothing Product 64,Clothing,19.74,3.4,https://picsum.photos/seed/product_64/400/300
+65,Home & Garden Product 65,Home & Garden,71.11,3.5,https://picsum.photos/seed/product_65/400/300
+66,Clothing Product 66,Clothing,30.95,3.3,https://picsum.photos/seed/product_66/400/300
+67,Books Product 67,Books,429.89,3.8,https://picsum.photos/seed/product_67/400/300
+68,Clothing Product 68,Clothing,373.16,4.0,https://picsum.photos/seed/product_68/400/300
+69,Books Product 69,Books,454.2,4.5,https://picsum.photos/seed/product_69/400/300
+70,Clothing Product 70,Clothing,169.23,3.9,https://picsum.photos/seed/product_70/400/300
+71,Books Product 71,Books,413.71,3.5,https://picsum.photos/seed/product_71/400/300
+72,Sports Product 72,Sports,37.94,4.2,https://picsum.photos/seed/product_72/400/300
+73,Books Product 73,Books,194.05,3.8,https://picsum.photos/seed/product_73/400/300
+74,Home & Garden Product 74,Home & Garden,389.32,4.4,https://picsum.photos/seed/product_74/400/300
+75,Electronics Product 75,Electronics,51.36,3.8,https://picsum.photos/seed/product_75/400/300
+76,Sports Product 76,Sports,442.47,4.8,https://picsum.photos/seed/product_76/400/300
+77,Sports Product 77,Sports,460.55,4.4,https://picsum.photos/seed/product_77/400/300
+78,Books Product 78,Books,257.28,3.1,https://picsum.photos/seed/product_78/400/300
+79,Books Product 79,Books,406.51,4.4,https://picsum.photos/seed/product_79/400/300
+80,Clothing Product 80,Clothing,446.65,4.8,https://picsum.photos/seed/product_80/400/300
+81,Home & Garden Product 81,Home & Garden,117.85,3.3,https://picsum.photos/seed/product_81/400/300
+82,Sports Product 82,Sports,425.9,3.9,https://picsum.photos/seed/product_82/400/300
+83,Books Product 83,Books,92.4,4.7,https://picsum.photos/seed/product_83/400/300
+84,Clothing Product 84,Clothing,361.12,4.5,https://picsum.photos/seed/product_84/400/300
+85,Sports Product 85,Sports,232.74,3.3,https://picsum.photos/seed/product_85/400/300
+86,Home & Garden Product 86,Home & Garden,188.75,3.5,https://picsum.photos/seed/product_86/400/300
+87,Sports Product 87,Sports,201.72,3.5,https://picsum.photos/seed/product_87/400/300
+88,Home & Garden Product 88,Home & Garden,59.62,4.6,https://picsum.photos/seed/product_88/400/300
+89,Books Product 89,Books,470.21,4.7,https://picsum.photos/seed/product_89/400/300
+90,Books Product 90,Books,258.02,3.3,https://picsum.photos/seed/product_90/400/300
+91,Books Product 91,Books,351.65,4.9,https://picsum.photos/seed/product_91/400/300
+92,Books Product 92,Books,201.49,3.9,https://picsum.photos/seed/product_92/400/300
+93,Books Product 93,Books,67.8,3.6,https://picsum.photos/seed/product_93/400/300
+94,Clothing Product 94,Clothing,195.77,3.2,https://picsum.photos/seed/product_94/400/300
+95,Sports Product 95,Sports,185.97,3.4,https://picsum.photos/seed/product_95/400/300
+96,Home & Garden Product 96,Home & Garden,192.6,3.8,https://picsum.photos/seed/product_96/400/300
+97,Home & Garden Product 97,Home & Garden,484.03,4.4,https://picsum.photos/seed/product_97/400/300
+98,Clothing Product 98,Clothing,446.58,3.4,https://picsum.photos/seed/product_98/400/300
+99,Home & Garden Product 99,Home & Garden,322.58,4.8,https://picsum.photos/seed/product_99/400/300
+100,Home & Garden Product 100,Home & Garden,100.21,4.7,https://picsum.photos/seed/product_100/400/300

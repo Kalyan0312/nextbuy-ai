@@ -1,0 +1,51 @@
+user_id,name,age,gender,location
+1,User 1,36,O,New York
+2,User 2,24,F,Los Angeles
+3,User 3,49,O,Phoenix
+4,User 4,45,O,Houston
+5,User 5,26,F,London
+6,User 6,26,M,Los Angeles
+7,User 7,56,M,Chicago
+8,User 8,29,O,Paris
+9,User 9,20,F,Houston
+10,User 10,50,M,New York
+11,User 11,51,M,Phoenix
+12,User 12,39,F,Tokyo
+13,User 13,37,F,London
+14,User 14,61,F,London
+15,User 15,22,M,Houston
+16,User 16,26,M,Houston
+17,User 17,35,O,Houston
+18,User 18,46,O,Houston
+19,User 19,26,F,Paris
+20,User 20,54,F,London
+21,User 21,60,O,Paris
+22,User 22,38,M,Chicago
+23,User 23,29,M,Houston
+24,User 24,35,F,New York
+25,User 25,54,O,Paris
+26,User 26,42,M,London
+27,User 27,18,M,Tokyo
+28,User 28,53,O,Houston
+29,User 29,36,M,Houston
+30,User 30,35,O,Tokyo
+31,User 31,25,F,Los Angeles
+32,User 32,41,O,London
+33,User 33,34,O,Paris
+34,User 34,47,O,Tokyo
+35,User 35,25,M,Houston
+36,User 36,65,F,New York
+37,User 37,61,M,London
+38,User 38,28,O,Houston
+39,User 39,30,F,Los Angeles
+40,User 40,31,F,Chicago
+41,User 41,35,O,Phoenix
+42,User 42,20,O,Tokyo
+43,User 43,65,O,Los Angeles
+44,User 44,60,O,New York
+45,User 45,65,M,Los Angeles
+46,User 46,50,F,Chicago
+47,User 47,24,F,New York
+48,User 48,64,O,Houston
+49,User 49,51,M,Houston
+50,User 50,57,O,Chicago

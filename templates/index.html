@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - neXtbuy AI{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <header style="margin-bottom: 3rem;">
+        <h1 class="page-title">Hello, {{ user_name }}</h1>
+        <p class="page-subtitle">Discover products tailored just for you based on our AI collaborative filtering algorithm.</p>
+        
+        <div class="search-container">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for products or categories...">
+            <div id="searchResults" class="glass-panel" style="display: none; position: absolute; width: 100%; top: 100%; margin-top: 0.5rem; z-index: 50; max-height: 300px; overflow-y: auto;">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </header>
+
+    <section style="margin-bottom: 4rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-color);"></i> Recommended for You
+        </h2>
+        
+        <div class="product-grid" id="recommendationGrid">
+            {% for product in recommended_products %}
+            <div class="glass-panel product-card">
+                <div class="product-img-wrapper">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                    <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">{{ product.category }}</div>
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <div class="product-footer">
+                        <span class="product-price">${{ product.price }}</span>
+                        <button class="btn btn-primary" onclick="addToCart({{ product.product_id }})">Add</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if not recommended_products %}
+            <div style="grid-column: 1 / -1; padding: 3rem; text-align: center; color: var(--text-secondary);" class="glass-panel">
+                <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <p>Not enough data to make personalized recommendations yet.</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-fire" style="color: #ef4444;"></i> Trending Products
+        </h2>
+        
+        <div class="product-grid">
+            {% for product in top_products %}
+            <div class="glass-panel product-card">
+                <div class="product-img-wrapper">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                    <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">{{ product.category }}</div>
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <div class="product-footer">
+                        <span class="product-price">${{ product.price }}</span>
+                        <button class="btn btn-primary" onclick="addToCart({{ product.product_id }})">Add</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}
