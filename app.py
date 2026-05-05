@@ -9,8 +9,10 @@ import time
 app = Flask(__name__)
 app.secret_key = 'nextgen_secret_key_super_secure'
 
-# MySQL Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:kalyan03@localhost/nextbuy_db'
+# Configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'mysql+pymysql://root:kalyan03@localhost/nextbuy_db')
+if app.config['SQLALCHEMY_DATABASE_URI'].startswith("postgres://"):
+    app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'].replace("postgres://", "postgresql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
@@ -298,4 +300,5 @@ def profile():
     return render_template('profile.html', user=user)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5001))
+    app.run(host='0.0.0.0', port=port)

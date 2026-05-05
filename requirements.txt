@@ -5,3 +5,5 @@ scikit-learn
 Werkzeug
 setuptools
 flask-sqlalchemy
+pymysql
+gunicorn
