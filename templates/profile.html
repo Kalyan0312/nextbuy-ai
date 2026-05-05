@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ user.name[0] }}
+        </div>
+        <div class="profile-main-info">
+            <h1 class="user-name">{{ user.name }}</h1>
+            <p class="user-email">{{ user.email }}</p>
+            <div class="user-badges">
+                <span class="badge">Prime Member</span>
+                <span class="badge">Verified</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="profile-sections">
+        <div class="section-card">
+            <h3><i class="fas fa-user-circle"></i> Personal Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Gender</span>
+                    <span class="value">{{ user.gender }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Phone</span>
+                    <span class="value">{{ user.phone or 'Not provided' }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Date of Birth</span>
+                    <span class="value">{{ user.date_of_birth or 'Not provided' }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Joined</span>
+                    <span class="value">{{ user.created_at.strftime('%B %d, %Y') }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3><i class="fas fa-map-marker-alt"></i> Location & Preferences</h3>
+            {% if user.profile %}
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Current Location</span>
+                    <span class="value">{{ user.profile.location }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Lifecycle Stage</span>
+                    <span class="value">{{ user.profile.lifecycle_stage }}</span>
+                </div>
+            </div>
+            <div class="interests-section">
+                <span class="label">Interests</span>
+                <div class="interest-tags">
+                    {% if user.profile.interests %}
+                        {% for interest in user.profile.interests %}
+                        <span class="tag">{{ interest }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="value">No interests selected</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <p>Profile information not available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 800;
+    box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.5);
+}
+.user-name {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+.user-email {
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+.user-badges {
+    display: flex;
+    gap: 10px;
+}
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+.profile-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.section-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+}
+.section-card h3 {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+.value {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+.interests-section {
+    margin-top: 25px;
+}
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-sections {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

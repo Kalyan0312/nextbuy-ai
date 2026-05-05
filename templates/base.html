@@ -23,7 +23,15 @@
         </a>
         <div class="nav-links">
             <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a>
-            <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' else '' }}">Dashboard</a>
+            <a href="{{ url_for('cart') }}" class="{{ 'active' if request.endpoint == 'cart' else '' }}">
+                <i class="fa-solid fa-cart-shopping"></i> Cart
+            </a>
+            <a href="{{ url_for('orders') }}" class="{{ 'active' if request.endpoint == 'orders' else '' }}">Orders</a>
+            <a href="{{ url_for('profile') }}" class="{{ 'active' if request.endpoint == 'profile' else '' }}">Profile</a>
+            {% if session.get('is_admin') %}
+                <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' else '' }}">Insights</a>
+                <a href="{{ url_for('models_dashboard') }}" class="{{ 'active' if request.endpoint == 'models_dashboard' else '' }}">AI Hub</a>
+            {% endif %}
             <a href="{{ url_for('logout') }}" class="btn btn-primary" style="color: white; font-weight: normal; padding: 0.4rem 1rem;">Logout</a>
         </div>
     </nav>

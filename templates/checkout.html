@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - neXtbuy AI{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <header style="margin-bottom: 2rem;">
+        <h1 class="page-title">Checkout</h1>
+        <p class="page-subtitle">Complete your purchase by providing delivery and payment details.</p>
+    </header>
+
+    <form action="{{ url_for('place_order') }}" method="POST">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <!-- Delivery Details -->
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-truck" style="color: var(--accent-color);"></i> Delivery Address
+                    </h2>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Full Name</label>
+                            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 8px; color: white;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Full Address</label>
+                            <textarea name="address" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 8px; color: white; min-height: 100px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Details -->
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-credit-card" style="color: var(--accent-color);"></i> Payment Method
+                    </h2>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <label class="payment-option" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                            <input type="radio" name="payment_method" value="COD" checked>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-money-bill-1-wave" style="font-size: 1.5rem; color: #10b981;"></i>
+                                <div>
+                                    <div style="font-weight: 600;">Cash on Delivery (COD)</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Pay when your package arrives</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="payment-option" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                            <input type="radio" name="payment_method" value="UPI">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-mobile-screen-button" style="font-size: 1.5rem; color: #3b82f6;"></i>
+                                <div>
+                                    <div style="font-weight: 600;">UPI (Google Pay, PhonePe, Paytm)</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Pay using your UPI app</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="payment-option" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                            <input type="radio" name="payment_method" value="Card">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-credit-card" style="font-size: 1.5rem; color: #f59e0b;"></i>
+                                <div>
+                                    <div style="font-weight: 600;">Credit / Debit Card</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Visa, Mastercard, RuPay</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel" style="padding: 1.5rem; height: fit-content;">
+                <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Order Summary</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                    {% for item in cart_items %}
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span style="color: var(--text-secondary);">{{ item.product.name }} x {{ item.quantity }}</span>
+                        <span>₹{{ item.product.price * item.quantity }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: space-between; font-weight: 700; font-size: 1.25rem;">
+                    <span>Total</span>
+                    <span style="color: var(--accent-color);">₹{{ total }}</span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem; padding: 1rem; font-size: 1rem;">Place Order</button>
+                <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin-top: 1rem;">
+                    By placing your order, you agree to our Terms of Service and Privacy Policy.
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+.payment-option:hover {
+    background: rgba(255,255,255,0.05);
+}
+.payment-option input:checked + div {
+    color: white;
+}
+.payment-option input:checked {
+    accent-color: var(--accent-color);
+}
+</style>
+{% endblock %}

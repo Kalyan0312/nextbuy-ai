@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="${product.image_url}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
                                     <div>
                                         <div style="font-weight: 600; color: var(--text-primary);">${product.name}</div>
-                                        <div style="font-size: 0.8rem; color: var(--accent-color);">${product.category} &bull; $${product.price}</div>
+                                        <div style="font-size: 0.8rem; color: var(--accent-color);">${product.category} &bull; ₹${product.price}</div>
                                     </div>
                                 </div>
                             `).join('');
@@ -49,15 +49,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addToCart(productId) {
-    // Simple mock function for adding to cart
     const btn = event.currentTarget;
     const originalText = btn.innerHTML;
     
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
-    btn.style.background = '#10b981';
-    
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = ''; // reset to CSS
-    }, 2000);
+    fetch(`/add_to_cart/${productId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
+            btn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = ''; // reset to CSS
+            }, 2000);
+        } else {
+            alert(data.error || 'Failed to add product to cart');
+        }
+    })
+    .catch(err => {
+        console.error('Error adding to cart:', err);
+        alert('An error occurred. Please try again.');
+    });
 }

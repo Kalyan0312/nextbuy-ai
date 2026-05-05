@@ -21,7 +21,16 @@ def generate_mock_data():
     # 2. Products
     products_data = []
     categories = ['Electronics', 'Clothing', 'Home & Garden', 'Sports', 'Books']
-    for i in range(1, 101):
+    
+    product_names = {
+        'Electronics': ['Smartphone Pro', 'Wireless Earbuds', 'Smart Watch', 'Laptop Ultra', 'Gaming Console', '4K TV', 'Bluetooth Speaker', 'Digital Camera', 'Tablet Pad', 'Power Bank'],
+        'Clothing': ['Classic T-Shirt', 'Denim Jeans', 'Hoodie Oversized', 'Summer Dress', 'Leather Jacket', 'Running Shoes', 'Formal Shirt', 'Silk Scarf', 'Woolen Sweater', 'Cotton Socks'],
+        'Home & Garden': ['Smart Bulb', 'Robot Vacuum', 'Coffee Maker', 'Office Chair', 'Garden Tools', 'Luxury Bedding', 'Ceramic Vase', 'Kitchen Scale', 'Wall Clock', 'Plush Rug'],
+        'Sports': ['Yoga Mat', 'Dumbbells Set', 'Basketball', 'Football Boots', 'Swimming Goggles', 'Tennis Racket', 'Cycling Helmet', 'Jump Rope', 'Hiking Bag', 'Resistance Bands'],
+        'Books': ['Mystery Novel', 'Sci-Fi Epic', 'Self-Help Guide', 'Cooking Recipes', 'History Book', 'Biography', 'Art Collection', 'Travel Guide', 'Poetry Book', 'Children\'s Story']
+    }
+
+    for i in range(1, 201):
         category = random.choice(categories)
         # Map categories to local images for relevance
         category_images = {
@@ -32,12 +41,14 @@ def generate_mock_data():
             'Books': '/static/images/books.png'
         }
         
+        name_base = random.choice(product_names[category])
+        
         products_data.append({
             'product_id': i,
-            'name': f'{category} Product {i}',
+            'name': f'{name_base} {i}',
             'category': category,
-            'price': round(random.uniform(10.0, 500.0), 2),
-            'rating': round(random.uniform(3.0, 5.0), 1),
+            'price': round(random.uniform(500.0, 60000.0), 0),
+            'rating': round(random.uniform(3.5, 5.0), 1),
             'image_url': category_images.get(category, '/static/images/electronics.png')
         })
     products_df = pd.DataFrame(products_data)

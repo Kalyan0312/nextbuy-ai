@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="models-container">
+    <div class="header-section">
+        <h1 class="page-title">AI Recommendation Engine</h1>
+        <p class="subtitle">Platform Intelligence & Model Training Hub</p>
+    </div>
+    
+    <div class="models-grid">
+        {% for model in models %}
+        <div class="model-card">
+            <div class="model-badge {{ model.status.lower() }}">{{ model.status }}</div>
+            <h2 class="model-name">{{ model.model_name }}</h2>
+            <div class="model-type">{{ model.model_type }} Engine</div>
+            
+            <div class="model-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Version</span>
+                    <span class="stat-value">{{ model.version }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Last Trained</span>
+                    <span class="stat-value">{{ model.trained_at.strftime('%Y-%m-%d %H:%M') if model.trained_at else 'Never' }}</span>
+                </div>
+            </div>
+            
+            <div class="section-title">Model Features</div>
+            <div class="feature-list">
+                {% for feature in model.features %}
+                <div class="feature-tag" title="{{ feature.description }}">
+                    {{ feature.feature_name }} ({{ feature.feature_type }})
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="section-title">Recent Training Runs</div>
+            <div class="runs-list">
+                {% for run in model.training_runs %}
+                <div class="run-item">
+                    <div class="run-info">
+                        <span class="run-date">{{ run.run_started_at.strftime('%m/%d %H:%M') }}</span>
+                        <span class="run-status {{ run.status.lower() }}">{{ run.status }}</span>
+                    </div>
+                    {% if run.training_metrics %}
+                    <div class="run-metrics">
+                        {% for k, v in run.training_metrics.items() %}
+                        <span class="metric">{{ k }}: {{ v }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            
+            <button class="btn btn-primary btn-full mt-20">Trigger Retraining</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.models-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.header-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.subtitle {
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 30px;
+}
+.model-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+.model-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.model-badge.active { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+
+.model-name {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+.model-type {
+    color: #888;
+    margin-bottom: 30px;
+}
+.model-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 16px;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+.stat-value {
+    font-weight: 600;
+    color: #fff;
+}
+.section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.feature-tag {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+}
+.runs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.run-item {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.run-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.run-date { font-size: 0.9rem; font-weight: 500; }
+.run-status { font-size: 0.8rem; font-weight: 700; }
+.run-status.success { color: #2ecc71; }
+.run-metrics {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+.btn-full { width: 100%; }
+.mt-20 { margin-top: 20px; }
+</style>
+{% endblock %}

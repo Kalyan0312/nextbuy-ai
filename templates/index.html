@@ -25,15 +25,19 @@
         <div class="product-grid" id="recommendationGrid">
             {% for product in recommended_products %}
             <div class="glass-panel product-card">
-                <div class="product-img-wrapper">
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
-                    <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">{{ product.category }}</div>
-                    <h3 class="product-name">{{ product.name }}</h3>
+                <a href="{{ url_for('product_detail', product_id=product.product_id) }}" class="product-link">
+                    <div class="product-img-wrapper">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                        <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">{{ product.category }}</div>
+                        <h3 class="product-name">{{ product.name }}</h3>
+                    </div>
+                </a>
+                <div class="product-info" style="padding-top: 0;">
                     <div class="product-footer">
-                        <span class="product-price">${{ product.price }}</span>
+                        <span class="product-price">₹{{ product.price }}</span>
                         <button class="btn btn-primary" onclick="addToCart({{ product.product_id }})">Add</button>
                     </div>
                 </div>
@@ -57,15 +61,19 @@
         <div class="product-grid">
             {% for product in top_products %}
             <div class="glass-panel product-card">
-                <div class="product-img-wrapper">
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
-                    <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">{{ product.category }}</div>
-                    <h3 class="product-name">{{ product.name }}</h3>
+                <a href="{{ url_for('product_detail', product_id=product.product_id) }}" class="product-link">
+                    <div class="product-img-wrapper">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                        <div class="product-badge"><i class="fa-solid fa-star"></i> {{ product.rating }}</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">{{ product.category }}</div>
+                        <h3 class="product-name">{{ product.name }}</h3>
+                    </div>
+                </a>
+                <div class="product-info" style="padding-top: 0;">
                     <div class="product-footer">
-                        <span class="product-price">${{ product.price }}</span>
+                        <span class="product-price">₹{{ product.price }}</span>
                         <button class="btn btn-primary" onclick="addToCart({{ product.product_id }})">Add</button>
                     </div>
                 </div>

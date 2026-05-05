@@ -4,15 +4,20 @@
 
 {% block content %}
 <div class="animate-fade-in">
-    <header style="margin-bottom: 2rem;">
+    <header style="margin-bottom: 2rem; position: relative;">
         <h1 class="page-title">Analytics Dashboard</h1>
         <p class="page-subtitle">Platform performance and user engagement metrics</p>
+        <div style="position: absolute; top: 0; right: 0; display: flex; gap: 1rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+            <span style="color: #39FF14; border: 1px solid #39FF14; padding: 4px 10px; border-radius: 4px; box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);">Data Analysis</span>
+            <span style="color: #FF5F1F; border: 1px solid #FF5F1F; padding: 4px 10px; border-radius: 4px; box-shadow: 0 0 10px rgba(255, 95, 31, 0.3);">Data Visualization</span>
+            <span style="color: #FFFFFF; border: 1px solid #FFFFFF; padding: 4px 10px; border-radius: 4px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);">Business Decision Support</span>
+        </div>
     </header>
 
     <div class="stats-grid">
         <div class="glass-panel stat-card">
             <span class="stat-title">Total Revenue</span>
-            <span class="stat-value">${{ insights.get('total_revenue', 0) }}</span>
+            <span class="stat-value">₹{{ insights.get('total_revenue', 0) }}</span>
             <div style="margin-top: 1rem; font-size: 0.85rem; color: #10b981;">
                 <i class="fa-solid fa-arrow-trend-up"></i> +12.5% from last month
             </div>
@@ -43,52 +48,134 @@
         </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 3rem;">
-        <div class="glass-panel" style="padding: 2rem;">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-                <i class="fa-solid fa-chart-pie" style="color: var(--primary-color);"></i> Top Categories
-            </h3>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                {% for category, count in insights.get('top_categories', {}).items() %}
-                <div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
-                        <span>{{ category }}</span>
-                        <span style="color: var(--text-secondary);">{{ count }} products</span>
-                    </div>
-                    <div style="width: 100%; background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; overflow: hidden;">
-                        <div style="width: {{ (count / insights.get('total_products', 1) * 100)|round }}%; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); height: 100%; border-radius: 4px;"></div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+    <!-- MODULE 1: USER DATA ANALYSIS -->
+    <div class="glass-panel" style="margin-top: 3rem; padding: 2rem; border-top: 3px solid #39FF14;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.3rem; color: #39FF14;"><i class="fa-solid fa-user-gear"></i> 1) User Data Analysis Module</h3>
+            <span style="font-size: 0.75rem; color: #39FF14; font-weight: 800; letter-spacing: 1px;">DATA ANALYSIS</span>
         </div>
-        
-        <div class="glass-panel" style="padding: 2rem;">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-                <i class="fa-solid fa-robot" style="color: var(--accent-color);"></i> Recommendation Engine
-            </h3>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem;">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <div style="background: rgba(59, 130, 246, 0.2); padding: 1rem; border-radius: 12px; color: var(--primary-color);">
-                        <i class="fa-solid fa-users-viewfinder fa-xl"></i>
-                    </div>
-                    <div>
-                        <h4 style="margin-bottom: 0.25rem;">Collaborative Filtering</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Analyzing user-item interaction matrix with Cosine Similarity to find similar user behaviors.</p>
-                    </div>
-                </div>
-                
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <div style="background: rgba(139, 92, 246, 0.2); padding: 1rem; border-radius: 12px; color: var(--accent-color);">
-                        <i class="fa-solid fa-filter fa-xl"></i>
-                    </div>
-                    <div>
-                        <h4 style="margin-bottom: 0.25rem;">Data Preprocessing</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Cleaned missing values, removed duplicates, and normalized interactions for accurate modeling.</p>
-                    </div>
-                </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div class="analysis-feature">
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Data Cleaning & Preprocessing</h4>
+                <p style="font-size: 0.85rem; color: #888;">Removing noise and duplicates from interaction logs.</p>
+            </div>
+            <div class="analysis-feature">
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Exploratory Data Analysis (EDA)</h4>
+                <p style="font-size: 0.85rem; color: #888;">Identifying key statistical distributions in user behavior.</p>
+            </div>
+            <div class="analysis-feature">
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Data Transformation</h4>
+                <p style="font-size: 0.85rem; color: #888;">Converting raw logs into user-item interaction matrices.</p>
+            </div>
+            <div class="analysis-feature" style="border: 1px solid rgba(57, 255, 20, 0.2); padding: 10px; border-radius: 8px;">
+                <h4 style="color: #39FF14; margin-bottom: 0.5rem;">Data-Driven Insights</h4>
+                <p style="font-size: 0.85rem; color: #ccc;">Understand customer trends & behaviour to predict future needs.</p>
             </div>
         </div>
     </div>
+
+    <!-- MODULE 2: COLLABORATIVE FILTERING -->
+    <div class="glass-panel" style="margin-top: 2rem; padding: 2rem; border-top: 3px solid #39FF14;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.3rem; color: #39FF14;"><i class="fa-solid fa-network-wired"></i> 2) Collaborative Filtering Recommendation</h3>
+            <span style="font-size: 0.75rem; color: #39FF14; font-weight: 800; letter-spacing: 1px;">DATA ANALYSIS OUTPUT</span>
+        </div>
+        <div style="background: rgba(57, 255, 20, 0.05); padding: 20px; border-radius: 12px; border-left: 4px solid #39FF14;">
+            <h4 style="color: #fff; margin-bottom: 10px;">Personalized Recommendations</h4>
+            <p style="font-size: 1rem; color: #39FF14; font-weight: 600;">→ Improved user experience & engagement</p>
+            <p style="font-size: 0.85rem; color: #888; margin-top: 10px;">Utilizing User-User Cosine Similarity to surface products based on similar peer interest.</p>
+        </div>
+    </div>
+
+    <!-- MODULE 3: RECOMMENDATION MODULE (BUSINESS OUTCOMES) -->
+    <div class="glass-panel" style="margin-top: 2rem; padding: 2rem; border-top: 3px solid #FFFFFF;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.3rem; color: #FFFFFF;"><i class="fa-solid fa-rocket"></i> 3) Recommendation Module</h3>
+            <span style="font-size: 0.75rem; color: #FFFFFF; font-weight: 800; letter-spacing: 1px;">BUSINESS DECISION SUPPORT</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                <h4 style="color: #fff; margin-bottom: 5px;">Higher Conversion Rates</h4>
+                <p style="color: #fff; font-weight: 600;">→ Increased product sales & cross-selling</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                <h4 style="color: #fff; margin-bottom: 5px;">Customer Retention</h4>
+                <p style="color: #fff; font-weight: 600;">→ Better loyalty through relevant suggestions</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                <h4 style="color: #fff; margin-bottom: 5px;">Revenue Growth</h4>
+                <p style="color: #fff; font-weight: 600;">→ Boosted average order value & profitability</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISUALIZATION SECTION -->
+    <div class="glass-panel" style="margin-top: 3rem; padding: 2rem; border-top: 3px solid #FF5F1F;">
+        <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-chart-pie" style="color: #FF5F1F;"></i> Data Visualization: Top Categories</span>
+            <span style="font-size: 0.7rem; color: #FF5F1F; font-weight: 800;">DATA VISUALIZATION</span>
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            {% for category, count in insights.get('top_categories', {}).items() %}
+            <div class="category-item">
+                <div class="category-header">
+                    <span>{{ category }}</span>
+                    <span class="category-count">{{ count }} products</span>
+                </div>
+                <div class="category-track">
+                    <div class="category-progress" data-width="{{ (count / (insights.get('total_products', 1) or 1) * 100)|round|int }}"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
+
+<style>
+.analysis-feature {
+    background: rgba(255,255,255,0.02);
+    padding: 15px;
+    border-radius: 12px;
+}
+.category-item {
+    margin-bottom: 1.5rem;
+}
+.category-header {
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 0.5rem; 
+    font-size: 0.9rem;
+}
+.category-count {
+    color: #888;
+}
+.category-track {
+    width: 100%; 
+    background: rgba(255,255,255,0.1); 
+    height: 8px; 
+    border-radius: 4px; 
+    overflow: hidden;
+}
+.category-progress {
+    background: #FF5F1F;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #FF5F1F;
+    transition: width 0.3s ease;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bars = document.querySelectorAll('.category-progress');
+    bars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        if (width) {
+            bar.style.width = width + '%';
+        }
+    });
+});
+</script>
 {% endblock %}

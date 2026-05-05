@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Access Denied - neXtbuy AI{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in" style="text-align: center; padding: 5rem 2rem;">
+    <div class="glass-panel" style="max-width: 600px; margin: 0 auto; padding: 3rem;">
+        <i class="fa-solid fa-lock" style="font-size: 5rem; color: #ef4444; margin-bottom: 2rem; opacity: 0.8;"></i>
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Access Denied</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+            Sorry, you don't have the administrative privileges required to view this page.
+        </p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary" style="padding: 1rem 2rem;">Return Home</a>
+    </div>
+</div>
+{% endblock %}
